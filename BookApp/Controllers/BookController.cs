@@ -19,7 +19,9 @@ namespace BookApp.Controllers
             _context = context;
         }
 
-        // GET: Book
+        /// <summary>
+        /// Displays a list of all books with their authors
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Books.Include(b => b.Author);
