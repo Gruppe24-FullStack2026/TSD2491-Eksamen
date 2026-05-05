@@ -1,35 +1,30 @@
 @model BookApp.Models.Author
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Author";
 }
 
-<h1>Create</h1>
-
-<h4>Author</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nationality" class="control-label"></label>
-                <input asp-for="Nationality" class="form-control" />
-                <span asp-validation-for="Nationality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="max-w-xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6">Add New Author</h2>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
+        <div class="mb-4">
+            <label asp-for="Name" class="block font-semibold mb-1"></label>
+            <input asp-for="Name" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="Name" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Nationality" class="block font-semibold mb-1"></label>
+            <input asp-for="Nationality" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="Nationality" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="flex space-x-3">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create</button>
+            <a asp-action="Index" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Cancel</a>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

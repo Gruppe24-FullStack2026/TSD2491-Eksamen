@@ -1,55 +1,45 @@
 @model BookApp.Models.Book
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Book";
 }
 
-<h1>Create</h1>
-
-<h4>Book</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Title" class="form-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Isbn" class="form-label"></label>
-                <input asp-for="Isbn" class="form-control" />
-                <span asp-validation-for="Isbn" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="PublishedYear" class="form-label"></label>
-                <input asp-for="PublishedYear" class="form-control" />
-                <span asp-validation-for="PublishedYear" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Genre" class="form-label"></label>
-                <input asp-for="Genre" class="form-control" />
-                <span asp-validation-for="Genre" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="AuthorId" class="form-label">Author</label>
-                <select asp-for="AuthorId"
-                        asp-items="ViewBag.AuthorId"
-                        class="form-select">
-                    <option value="">-- Select author --</option>
-                </select>
-                <span asp-validation-for="AuthorId" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="max-w-xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6">Add New Book</h2>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
+        <div class="mb-4">
+            <label asp-for="Title" class="block font-semibold mb-1"></label>
+            <input asp-for="Title" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="Title" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Isbn" class="block font-semibold mb-1"></label>
+            <input asp-for="Isbn" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="Isbn" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="PublishedYear" class="block font-semibold mb-1"></label>
+            <input asp-for="PublishedYear" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="PublishedYear" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Genre" class="block font-semibold mb-1"></label>
+            <input asp-for="Genre" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            <span asp-validation-for="Genre" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="AuthorId" class="block font-semibold mb-1"></label>
+            <select asp-for="AuthorId" asp-items="ViewBag.AuthorId" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="">-- Select Author --</option>
+            </select>
+            <span asp-validation-for="AuthorId" class="text-red-500 text-sm"></span>
+        </div>
+        <div class="flex space-x-3">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create</button>
+            <a asp-action="Index" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Cancel</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

@@ -1,48 +1,35 @@
 @model BookApp.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Book Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Book</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Isbn)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Isbn)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PublishedYear)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PublishedYear)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="max-w-xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6">Book Details</h2>
+    <div class="border rounded shadow p-6 space-y-4">
+        <div>
+            <span class="font-semibold">Title:</span>
+            <span class="ml-2">@Model.Title</span>
+        </div>
+        <div>
+            <span class="font-semibold">ISBN:</span>
+            <span class="ml-2">@Model.Isbn</span>
+        </div>
+        <div>
+            <span class="font-semibold">Published Year:</span>
+            <span class="ml-2">@Model.PublishedYear</span>
+        </div>
+        <div>
+            <span class="font-semibold">Genre:</span>
+            <span class="ml-2">@Model.Genre</span>
+        </div>
+        <div>
+            <span class="font-semibold">Author:</span>
+            <span class="ml-2">@Model.Author?.Name</span>
+        </div>
+    </div>
+    <div class="flex space-x-3 mt-6">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500">Edit</a>
+        <a asp-action="Index" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Back to List</a>
+    </div>
 </div>
