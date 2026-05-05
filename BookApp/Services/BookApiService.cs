@@ -41,7 +41,9 @@ public class BookApiService
             .Select(i => new ApiBook
             {
                 Title = i.Metadata?.Title,
-                PublicationYear = i.Metadata?.Date
+                AuthorName = i.Metadata?.Creators?.FirstOrDefault(),
+                PublicationYear = i.Metadata?.OriginInfo?.Issued,
+                Genre = i.Metadata?.MediaTypes?.FirstOrDefault()
             })
             .Where(b => b.Title != null)
             .ToList() ?? new List<ApiBook>();
@@ -78,7 +80,17 @@ public class NbItem
 public class NbMetadata
 {
     public string? Title { get; set; }
-    public string? Date { get; set; }
+    public List<string>? Creators { get; set; }
+    public NbOriginInfo? OriginInfo { get; set; }
+    public List<string>? MediaTypes { get; set; }
+}
+
+/// <summary>
+/// Represents origin information for a book item from the API.
+/// </summary>
+public class NbOriginInfo
+{
+    public string? Issued { get; set; }
 }
 
 /// <summary>
@@ -87,5 +99,7 @@ public class NbMetadata
 public class ApiBook
 {
     public string? Title { get; set; }
+    public string? AuthorName { get; set; }
     public string? PublicationYear { get; set; }
+    public string? Genre { get; set; }
 }

@@ -52,14 +52,14 @@ public class ApiImportController : Controller
     /// <param name="title">Title of the book to import.</param>
     /// <param name="year">Publication year of the book.</param>
     [HttpPost]
-    public async Task<IActionResult> Import(string title, string year)
+    public async Task<IActionResult> Import(string title, string year, string authorName, string genre)
     {
-        var existingAuthor = _context.Authors.FirstOrDefault()
-            ?? new Author { Name = "Unknown Author" };
+        var author = _context.Authors.FirstOrDefault(a => a.Name == authorName);
 
-        if (existingAuthor.Id == 0)
+        if (author == null)
         {
-            _context.Authors.Add(existingAuthor);
+            author = new Author { Name = authorName ?? "Ukjent forfatter" };
+            _context.Authors.Add(author);
             await _context.SaveChangesAsync();
         }
 
@@ -67,7 +67,8 @@ public class ApiImportController : Controller
         {
             Title = title,
             PublishedYear = int.TryParse(year, out var y) ? y : null,
-            AuthorId = existingAuthor.Id
+            AuthorId = author.Id,
+            Genre = genre
         };
 
         _context.Books.Add(book);

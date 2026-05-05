@@ -1,0 +1,37 @@
+@model List<BookApp.Services.ApiBook>
+
+<div class="max-w-2xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6">Search Results for "@ViewData["Query"]"</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <p class="text-gray-500">No Books Found.</p>
+    }
+    else
+    {
+        <ul class="space-y-4">
+            @foreach (var book in Model)
+            {
+                <li class="border rounded p-4 flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold">@book.Title</p>
+                        <p class="text-gray-500 text-sm">@book.AuthorName</p>
+                        <p class="text-gray-500 text-sm">@book.PublicationYear</p>
+                    </div>
+                    <form asp-action="Import" method="post">
+                        <input type="hidden" name="title" value="@book.Title" />
+                        <input type="hidden" name="year" value="@book.PublicationYear" />
+                        <input type="hidden" name="authorName" value="@book.AuthorName" />
+                        <input type="hidden" name="genre" value="@book.Genre" />
+                        <button type="submit"
+                                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
+                            Import
+                        </button>
+                    </form>
+                </li>
+            }
+        </ul>
+    }
+
+    <a asp-action="Index" class="mt-6 inline-block text-blue-600 hover:underline">← New Search</a>
+</div>

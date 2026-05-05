@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookApp</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/css/app.css" />
+    <link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookApp.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="flex items-center justify-between px-6 py-3 bg-white border-b shadow-sm mb-6">
+            <a class="text-xl font-bold text-gray-800" asp-area="" asp-controller="Home" asp-action="Index">BookApp</a>
+            <ul class="flex gap-6">
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-area="" asp-controller="Author" asp-action="Index">Authors</a>
+                </li>
+                <li>
+                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-controller="ApiImport" asp-action="Index">Import Books</a>
+                </li>
+            </ul>
         </nav>
     </header>
     <div class="container">

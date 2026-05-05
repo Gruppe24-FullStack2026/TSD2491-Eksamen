@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Import Books From Nasjonalbiblioteket";
+}
+
+<div class="max-w-2xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold mb-6">Import Books From Nasjonalbiblioteket</h2>
+
+    <form asp-action="Search" method="get" class="flex gap-2 mb-6">
+        <input type="text"
+               name="query"
+               placeholder="Search For Book Or Author..."
+               class="border rounded px-4 py-2 w-full" />
+        <button type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Search
+        </button>
+    </form>
+</div>
