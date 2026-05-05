@@ -64,7 +64,6 @@ Author (1) ──── (mange) Book
 |---|---|
 | Author | Id, Name, Nationality |
 | Book | Id, Title, Isbn, PublishedYear, Genre, AuthorId |
-| Library | Id, Name, Municipality |
 
 ## API-integrasjon
 Applikasjonen henter bøker fra Nasjonalbibliotekets åpne API:

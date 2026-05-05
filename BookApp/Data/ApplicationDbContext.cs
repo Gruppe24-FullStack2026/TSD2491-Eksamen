@@ -26,8 +26,4 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     /// </summary>
     public DbSet<Author> Authors { get; set; }
 
-    /// <summary>
-    /// Database table for libraries.
-    /// </summary>
-    public DbSet<Library> Libraries { get; set; }
 }
