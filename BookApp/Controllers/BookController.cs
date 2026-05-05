@@ -19,14 +19,16 @@ namespace BookApp.Controllers
             _context = context;
         }
 
-        // GET: Book
+        /// <summary>
+        /// Displays a list of all books with their authors
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Books.Include(b => b.Author);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Book/Details/5
+        // GET: Book/Details/5  FJERNE DENNE?
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,7 +47,13 @@ namespace BookApp.Controllers
             return View(book);
         }
 
-        // GET: Book/Create
+        // GET: Book/Create FJERNE DENNE?
+
+        //Hvem skal vi gå for av den under og over
+
+        /// <summary>
+        /// Displays the form for creating a new book
+        /// </summary>
         public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name");
@@ -70,6 +78,12 @@ namespace BookApp.Controllers
         }
 
         // GET: Book/Edit/5
+
+        // Samme her også
+
+        /// <summary>
+        /// Displays the form for editing an exisiting book.
+        /// </summary>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
