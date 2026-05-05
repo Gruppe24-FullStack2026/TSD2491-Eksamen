@@ -2,18 +2,20 @@ using BookApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+/// <summary>
+/// Add MVC controllers with views to the service container.
+/// </summary>
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+/// <summary>
+/// Configueres the HTTP request pipeline for production environments.
+/// </summary>
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -24,10 +26,12 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+/// <summary>
+/// Maps the default MVC controller route: {controller=Home}/{action=Index}/{id?}
+///</summary>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
