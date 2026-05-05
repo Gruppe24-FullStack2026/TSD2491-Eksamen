@@ -22,7 +22,19 @@
                         <input type="hidden" name="title" value="@book.Title" />
                         <input type="hidden" name="year" value="@book.PublicationYear" />
                         <input type="hidden" name="authorName" value="@book.AuthorName" />
-                        <input type="hidden" name="genre" value="@book.Genre" />
+                        <select name="genre" class="border rounded px-2 py-1 text-sm">
+                            <option value="">-- Choose genre --</option>
+                            <option value="Novel">Novel</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Science Fiction">Science Fiction</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Biografi">Biografi</option>
+                            <option value="History">History</option>
+                            <option value="Children and youth">Children and youth</option>
+                            <option value="Non-fiction">Non-fiction</option>
+                            <option value="Other">Other</option>
+                        </select>
                         <button type="submit"
                                 class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
                             Import
