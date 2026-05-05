@@ -1,12 +1,14 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using BookApp.Models;
 
 namespace BookApp.Data;
 
 /// <summary>
-/// Database context for the BookApp application.
+/// Database context for the BookApp application with Identity support.
 /// </summary>
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     /// <summary>
     /// Initializes a new instance of ApplicationDbContext.

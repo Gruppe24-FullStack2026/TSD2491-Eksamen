@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,9 +27,31 @@
                     <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-area="" asp-controller="Author" asp-action="Index">Authors</a>
                 </li>
                 <li>
-                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-controller="ApiImport" asp-action="Index">Import Books</a>
+                    <a class="text-gray-700 hover:text-blue-600 hover:underline" asp-controller="ApiImport" asp-action="Index">Import books</a>
                 </li>
             </ul>
+            <div class="flex items-center gap-3">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <span class="text-gray-700 text-sm">Hello, @User.Identity?.Name</span>
+                    <form asp-area="Identity" asp-page="/Account/Logout" method="post">
+                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">
+                            Log out
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login"
+                    class="text-gray-700 hover:text-blue-600 hover:underline text-sm">
+                        Log in
+                    </a>
+                    <a asp-area="Identity" asp-page="/Account/Register"
+                    class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 text-sm">
+                        Register
+                    </a>
+                }
+            </div>
         </nav>
     </header>
     <div class="container">
