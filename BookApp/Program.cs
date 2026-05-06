@@ -47,4 +47,24 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 app.MapRazorPages();
+
+/// <summary>
+/// Creates a defualt user when you build your database
+/// </summary>
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    
+    string email = "admin@bookapp.no";
+    string password = "Admin123!";
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+        await userManager.CreateAsync(user, password);
+    }
+}
+
 app.Run();
