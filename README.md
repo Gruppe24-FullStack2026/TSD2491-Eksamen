@@ -3,7 +3,7 @@
 ## Om prosjektet
 BookApp er en full stack MVC-applikasjon bygget med ASP.NET Core og .NET 10.
 Applikasjonen lar brukere administrere bøker og forfattere, samt importere bøker
-fra Nasjonalbibliotekets åpne API. Bibliofil API
+fra Nasjonalbibliotekets åpne API.
 
 ## Github-bruker
 - Brukernavn: Gruppe24-FullStack2026
@@ -49,8 +49,8 @@ dotnet run
 Gå til /identity/Account/Register eller bruk "Register" knappen
 
 ### Testbruker
-- Epost: test@bookapp.no
-- Passord: Test1234!
+- Epost: admin@bookapp.no
+- Passord: Admin123!
 
 ### Passordbegrensinger
 - Minimum 8 tegn
@@ -66,10 +66,15 @@ Author (1) ──── (mange) Book
 | Book | Id, Title, Isbn, PublishedYear, Genre, AuthorId |
 
 ## API-integrasjon
-Applikasjonen henter bøker fra Nasjonalbibliotekets åpne API:
-https://api.nb.no/catalog/v1/items?q={søkeord}&mediatype=books
+Applikasjonen henter bøker fra Nasjonalbibliotekets åpne API ved å sende
+søkeforespørsler til følgende endepunkt:
+https://api.nb.no/catalog/v1/items
+Parametere som brukes:
+- `q` – søkeordet brukeren skriver inn
+- `mediatype=books` – filtrerer kun bøker
+
 Importerte bøker lagres i databasen. Forfatter opprettes automatisk hvis
-den ikke finnes fra før. Sjanger må velges manuelt ved import da API-et ikke har metadata for dette.
+den ikke finnes fra før. Sjanger velges manuelt ved import.
 
 ## Git branch-struktur
 main
