@@ -160,4 +160,21 @@ public class BookController : Controller
     {
         return _context.Books.Any(e => e.Id == id);
     }
+
+    /// <summary>
+    /// Searches for books by title or author name.
+    /// </summary>
+    /// <param name="query">The search string to filter by.</param>
+    public async Task<IActionResult> Search(string query)
+    {
+        if (string.IsNullOrWhiteSpace(query))
+            return View("Index", await _context.Books.Include(b => b.Author).ToListAsync());
+
+        var results = await _context.Books
+            .Include(b => b.Author)
+            .Where(b => b.Title.Contains(query) || b.Author!.Name.Contains(query))
+            .ToListAsync();
+
+        return View("Index", results);
+    }
 }
